@@ -17,25 +17,22 @@ const Home: React.FC = () => {
   const navigation = useNavigation();
 
   function handleDetails() {
-    navigation.navigate('Detalhes');
+    navigation.navigate('Minha Lista');
   }
 
   return (
     <ContainerBox>
       <ImageBackground
-        source={require('./../../assets/annie-spratt-MChSQHxGZrQ-unsplash.jpg')}
+        source={require('./../../assets/windows-SwHvzwEzCfA-unsplash.jpg')}
         style={{
           width: '100%',
           height: '100%',
         }}
         resizeMode="cover"
       >
-        <Text>Procurando um novo emprego</Text>
         <ContainerAction>
-          <ContainerText>Procurar </ContainerText>
-
           <ButtonLogin onPress={handleDetails}>
-            <Feather name="arrow-right" size={25} color="white" />
+            <Feather name="arrow-right" size={30} color="white" />
           </ButtonLogin>
         </ContainerAction>
       </ImageBackground>
