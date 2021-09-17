@@ -8,7 +8,7 @@ flex:1;
 
 export const ContainerText = styled.Text `
 color:#FFF;
-marginTop:15px;
+margin-Top:15px;
 font-weight: bold;
 font-size:20px;
 text-align: center;
@@ -35,7 +35,7 @@ width:30px;
 height:30px;
 justify-content: center;
 border-radius:50px;
-backgroundColor: #54cbfe;
+background-Color: #54cbfe;
 ` ;
 
 
@@ -43,17 +43,15 @@ export const ContainerAction = styled.View `
 display:flex;
 justify-content: center;
 align-items:center;
-marginTop: 630px;
+margin-Top: 630px;
+
 width:50px;
-marginLeft:350px;
+margin-Left:350px;
 border-top-left-radius: 20px;
 border-top-right-radius: 20px;
 border-bottom-left-radius: 20px;
 border-bottom-right-radius: 20px;
 border: 1px solid #FFF;
-
-
-
 
 `;
 
