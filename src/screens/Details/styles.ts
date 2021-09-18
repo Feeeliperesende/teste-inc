@@ -4,7 +4,9 @@ export const ContainerBox =styled.ScrollView `
 flex:1;
 background-Color:#7065e4;
 
+
 `;
+export const SimpleView = styled.View ``;
 
 export const ContainerText = styled.Text `
 color:#FFF;

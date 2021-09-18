@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ImageBackground, Text, View } from 'react-native';
+import { ImageBackground, Text, View, SafeAreaView } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import {
   ContainerBox,
@@ -17,26 +17,29 @@ const Home: React.FC = () => {
   const navigation = useNavigation();
 
   function handleDetails() {
+    //@ts-ignore
     navigation.navigate('Minha Lista');
   }
 
   return (
-    <ContainerBox>
-      <ImageBackground
-        source={require('./../../assets/windows-SwHvzwEzCfA-unsplash.jpg')}
-        style={{
-          width: '100%',
-          height: '100%',
-        }}
-        resizeMode="cover"
-      >
-        <ContainerAction>
-          <ButtonLogin onPress={handleDetails}>
-            <Feather name="arrow-right" size={30} color="white" />
-          </ButtonLogin>
-        </ContainerAction>
-      </ImageBackground>
-    </ContainerBox>
+    <SafeAreaView style={{ flex: 1 }}>
+      <ContainerBox>
+        <ImageBackground
+          source={require('./../../assets/windows-SwHvzwEzCfA-unsplash.jpg')}
+          style={{
+            width: '100%',
+            height: '100%',
+          }}
+          resizeMode="cover"
+        >
+          <ContainerAction>
+            <ButtonLogin onPress={handleDetails}>
+              <Feather name="arrow-right" size={30} color="white" />
+            </ButtonLogin>
+          </ContainerAction>
+        </ImageBackground>
+      </ContainerBox>
+    </SafeAreaView>
   );
 };
 

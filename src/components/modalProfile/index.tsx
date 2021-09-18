@@ -11,7 +11,7 @@ import {
 import api from '../../services/supabase';
 import { useNavigation } from '@react-navigation/native';
 
-const ModalBox = () => {
+const ModalProfile = () => {
   const [visible, setVisible] = React.useState(false);
   const [name, setName] = React.useState('');
   const [bornDate, setBornDate] = React.useState('');
@@ -36,7 +36,7 @@ const ModalBox = () => {
         salary,
         position,
       };
-      await api.post('/employees?select=*', data);
+      await api.put('/employees?select=*', data);
 
       setName('');
       setBornDate('');
@@ -95,7 +95,7 @@ const ModalBox = () => {
             onPress={handleTeste}
             style={{ marginTop: 8 }}
           >
-            Cadastrar novo usuário
+            Salvar
           </Button>
         </Modal>
       </Portal>
@@ -110,10 +110,10 @@ const ModalBox = () => {
         onPress={showModal}
         mode="contained"
       >
-        Adicionar
+        Editar
       </Button>
     </Provider>
   );
 };
 
-export default ModalBox;
+export default ModalProfile;

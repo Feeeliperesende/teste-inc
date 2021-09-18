@@ -5,9 +5,11 @@ import Routes from './routes';
 
 export default function App() {
   return (
-    <NavigationContainer>
+    <>
       <StatusBar style="auto" />
-      <Routes />
-    </NavigationContainer>
+      <NavigationContainer>
+        <Routes />
+      </NavigationContainer>
+    </>
   );
 }
