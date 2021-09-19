@@ -153,7 +153,7 @@ const Details: React.FC = () => {
           >
             <TouchButton
               style={{ paddingBottom: 5, marginRight: 5 }}
-              onPress={() => {}}
+              onPress={navigateToEdit}
             >
               <Feather name="edit" size={20} color="#000" />
             </TouchButton>

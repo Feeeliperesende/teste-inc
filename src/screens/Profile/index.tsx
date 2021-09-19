@@ -57,43 +57,7 @@ const EditProfile: React.FC = () => {
         }}
         resizeMode="cover"
       >
-        <View style={{ margin: 15, marginTop: 120 }}>
-          <TextInput
-            label="Nome"
-            value={name}
-            onChangeText={(text) => setName(text)}
-            style={{
-              marginTop: 20,
-              marginBottom: 5,
-              borderRadius: 7,
-              height: 50,
-            }}
-          />
-
-          <TextInput
-            label="Data de nascimento"
-            value={bornDate}
-            onChangeText={(text) => setBornDate(text)}
-            style={{ marginBottom: 5, borderRadius: 7, height: 50 }}
-          />
-          <TextInput
-            label="Salário"
-            value={salary}
-            onChangeText={(text) => setSalary(text)}
-            style={{ marginBottom: 5, borderRadius: 7, height: 50 }}
-          />
-          <TextInput
-            label="Posição"
-            value={position}
-            onChangeText={(text) => setPosition(text)}
-            style={{ marginBottom: 5, borderRadius: 7, height: 50 }}
-          />
-        </View>
-        <View style={{ width: 230, marginLeft: 80 }}>
-          <Button mode="contained" onPress={() => {}} style={{ marginTop: 3 }}>
-            Editar
-          </Button>
-        </View>
+        <ModalProfile />
       </ImageBackground>
     </ContainerBox>
   );
