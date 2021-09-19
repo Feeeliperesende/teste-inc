@@ -3,7 +3,8 @@ import styled from 'styled-components/native';
 
 
 export  const ContainerBox =styled.View `
-flex:1;
+flex:1
+
 `;
 
 export const ContainerText = styled.Text `

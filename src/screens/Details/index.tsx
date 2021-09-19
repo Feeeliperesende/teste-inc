@@ -12,10 +12,11 @@ import {
 } from './styles';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/core';
-import { View } from 'react-native';
+import { Modal, View, Button } from 'react-native';
 import api from '../../services/supabase';
 
 import { TextInput } from 'react-native-paper';
+import { Text } from 'react-native-rapi-ui';
 
 interface Users {
   id: number;
@@ -27,9 +28,10 @@ interface Users {
 
 const Details: React.FC = () => {
   const [users, setUsers] = useState<Users[]>([]);
-  const [allPeople, setAllPeople] = useState<Users[]>([]);
-  const [isSearchInputOpen, setIsSearchInputOpen] = useState(false);
-  const [text, onChangeText] = React.useState('');
+  const [searchText, setSearchText] = useState('');
+  const [list, SetList] = useState(users);
+
+  const [visivel, setVisivel] = useState(true);
   const navigation = useNavigation();
 
   useEffect(() => {
@@ -58,15 +60,29 @@ const Details: React.FC = () => {
     navigation.navigate('Editar perfil');
   }
 
-  async function handleAddPeople() {}
-
-  async function handleDelete(id: number, name: string) {
+  async function handleDelete(id: number) {
     try {
       const response = await api.delete(`employees?id=eq.${id}`);
     } catch (error) {
       console.log(error, 'AQI');
     }
   }
+
+  useEffect(() => {
+    if (searchText === '') {
+      SetList(users);
+    } else {
+      SetList(
+        users.filter((item) => {
+          if (item.name.toLowerCase().indexOf(searchText.toLowerCase()) > -1) {
+            return true;
+          } else {
+            return false;
+          }
+        })
+      );
+    }
+  }, [setSearchText]);
 
   return (
     <ContainerBox>
@@ -94,8 +110,8 @@ const Details: React.FC = () => {
         >
           <TextInput
             placeholder="Pesquisar"
-            onChangeText={onChangeText}
-            value={text}
+            value={searchText}
+            onChangeText={(val) => setSearchText(val)}
             style={{
               height: 18,
               margin: 8,
@@ -118,14 +134,14 @@ const Details: React.FC = () => {
           >
             <TouchButton
               style={{ paddingBottom: 5, marginRight: 5 }}
-              onPress={navigateToEdit}
+              onPress={() => {}}
             >
               <Feather name="edit" size={20} color="#000" />
             </TouchButton>
             <TouchButton
               style={{ paddingBottom: 5 }}
               onPress={() => {
-                handleDelete(item.id, item.name);
+                handleDelete(item.id);
               }}
             >
               <Feather name="trash-2" size={20} color="#000" />

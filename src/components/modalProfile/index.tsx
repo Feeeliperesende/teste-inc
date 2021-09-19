@@ -28,15 +28,12 @@ const ModalProfile = () => {
     borderRadius: 7,
   };
 
-  const handleTeste = async () => {
+  const handlePersonEdit = async () => {
     try {
       const data = {
         name,
-        bornDate,
-        salary,
-        position,
       };
-      await api.put('/employees?select=*', data);
+      await api.put('employees?name=eq.${name}', data);
 
       setName('');
       setBornDate('');
@@ -92,7 +89,7 @@ const ModalProfile = () => {
 
           <Button
             mode="contained"
-            onPress={handleTeste}
+            onPress={handlePersonEdit}
             style={{ marginTop: 8 }}
           >
             Salvar

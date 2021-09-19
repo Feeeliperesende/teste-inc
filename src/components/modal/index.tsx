@@ -28,7 +28,7 @@ const ModalBox = () => {
     borderRadius: 7,
   };
 
-  const handleTeste = async () => {
+  const handleSubmit = async () => {
     try {
       const data = {
         name,
@@ -92,7 +92,7 @@ const ModalBox = () => {
 
           <Button
             mode="contained"
-            onPress={handleTeste}
+            onPress={handleSubmit}
             style={{ marginTop: 8 }}
           >
             Cadastrar novo usuário
