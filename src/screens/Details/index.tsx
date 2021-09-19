@@ -38,6 +38,8 @@ const Details: React.FC = () => {
     getAllUsers();
   }, [users]);
 
+  useEffect(() => {}, [list]);
+
   async function getAllUsers() {
     try {
       const { data } = await api.get('/employees?select');
@@ -93,13 +95,30 @@ const Details: React.FC = () => {
           </TouchButton>
         </ButtonView>
         <ContainerText>Minha lista</ContainerText>
-        <ButtonView>
-          <TouchButton onPress={navigateToAdd}>
-            <Feather name="plus" size={20} color="#000" />
-          </TouchButton>
-        </ButtonView>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+          }}
+        >
+          <ButtonView style={{ marginRight: 10 }}>
+            <TouchButton
+              onPress={() => {
+                setList(users);
+              }}
+            >
+              <Feather name="refresh-ccw" size={20} color="#000" />
+            </TouchButton>
+          </ButtonView>
+          <ButtonView>
+            <TouchButton onPress={navigateToAdd}>
+              <Feather name="plus" size={20} color="#000" />
+            </TouchButton>
+          </ButtonView>
+        </View>
       </Content>
-      {list.length > 0 && (
+      {users.length > 0 && (
         <SimpleView
           style={{
             display: 'flex',
