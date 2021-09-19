@@ -29,7 +29,7 @@ interface Users {
 const Details: React.FC = () => {
   const [users, setUsers] = useState<Users[]>([]);
   const [searchText, setSearchText] = useState('');
-  const [list, SetList] = useState(users);
+  const [list, setList] = useState(users);
 
   const [visivel, setVisivel] = useState(true);
   const navigation = useNavigation();
@@ -70,9 +70,9 @@ const Details: React.FC = () => {
 
   useEffect(() => {
     if (searchText === '') {
-      SetList(users);
+      setList(users);
     } else {
-      SetList(
+      setList(
         users.filter((item) => {
           if (item.name.toLowerCase().indexOf(searchText.toLowerCase()) > -1) {
             return true;
@@ -82,7 +82,7 @@ const Details: React.FC = () => {
         })
       );
     }
-  }, [setSearchText]);
+  }, [searchText]);
 
   return (
     <ContainerBox>
@@ -99,7 +99,7 @@ const Details: React.FC = () => {
           </TouchButton>
         </ButtonView>
       </Content>
-      {users.length > 0 && (
+      {list.length > 0 && (
         <SimpleView
           style={{
             display: 'flex',
@@ -123,7 +123,7 @@ const Details: React.FC = () => {
         </SimpleView>
       )}
 
-      {users.map((item) => (
+      {list.map((item) => (
         <MapContent key={item.id}>
           <TextName>{item.name}</TextName>
           <TextPosition>{item.position}</TextPosition>
